@@ -1,0 +1,38 @@
+
+
+<div class="w3-card-4 w3-round w3-margin w3-display-container w3-theme-d4 w3-center w3-xlarge w3-padding">
+<span (click)="onClose()" class="w3-btn w3-display-topright">x</span>
+
+<div class="w3-row">
+  <span class="w3-half">Teile Beschreibung: </span>
+  <span class="w3-half" >{{selectedProgram.Name}}</span>
+</div>
+
+<div class="w3-row">
+  <span class="w3-half">Medium: </span>
+  <span class="w3-half" >{{selectedProgram.Medium }}</span>
+</div>
+<div class="w3-row">
+
+  <span class="w3-half">Compound: </span>
+  <span class="w3-half" >{{selectedProgram.Compound}}</span>
+</div>
+
+<div class="w3-row">
+  <span class="w3-half">Drehzahl: </span>
+  <span class="w3-half" >{{selectedProgram.Frequency + ' Hz'}}</span>
+</div>
+
+<div class="w3-row">
+  <span class="w3-half">Laufzeit: </span>
+  <span class="w3-half" >{{selectedProgram.Time + ' min'}}</span>
+</div>
+
+<div class="w3-bar w3-padding">
+
+<button (click) = "onEdit()" class="w3-btn w3-padding w3-margin w3-teal  w3-round" type="button" name="button">Edit</button>
+<button (click) = "onProcess()" class="w3-btn w3-padding  w3-margin w3-green w3-round" type="button" name="button">Run</button>
+</div>
+
+
+</div>

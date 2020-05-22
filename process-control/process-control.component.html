@@ -1,0 +1,38 @@
+<div class="w3-card-4 w3-round w3-margin w3-display-container w3-theme-d4 w3-center w3-xlarge w3-padding">
+<span (click)="onClose()" class="w3-btn w3-display-topright">x</span>
+
+
+
+
+<h2>{{selectedProgram.Name}}</h2>
+<hr>
+<div class="w3-row w3-margin ">
+  <span class="w3-third">restliche Zeit</span>
+  <div class="w3-third">{{appStateService.timeLeftString}}</div>
+  <div class="w3-third">
+    <button (click)="decreaseLeftTime()" class="w3-btn w3-left w3-third w3-round w3-theme-d2" type="button" name="button">-</button>
+    <button (click)="increaseLeftTime()" class="w3-btn w3-right w3-third w3-round w3-theme-l2" type="button" name="button">+</button>
+  </div>
+</div>
+
+<div class="w3-row w3-margin ">
+  <span class="w3-third">Drehzahl</span>
+  <div class="w3-third">{{appStateService.processFrequency}}</div>
+  <div class="w3-third ">
+    <button (click)="decreaseFrequency()" class="w3-btn w3-left w3-third w3-round w3-theme-d2" type="button" name="button">-</button>
+    <button (click)="increaseFrequency()" class="w3-btn w3-right w3-third w3-round w3-theme-l2" type="button" name="button">+</button>
+  </div>
+</div>
+
+
+
+
+
+<div [ngSwitch]="appStateService.readyState" class=" w3-row w3-center w3-margin">
+
+  <button *ngSwitchCase="1" (click) = "onRunDevice()" class="w3-btn w3-margin w3-green w3-round " type="button" name="button">Run Device</button>
+  <button *ngSwitchCase="2" (click) = "onStopDevice()" class="w3-btn w3-margin w3-red w3-round" type="button" name="button">Stop Device</button>
+  <button *ngSwitchCase="4" (click) = "onRestartProgram()" class="w3-btn w3-margin w3-teal w3-round" type="button" name="button">Restart</button>
+
+</div>
+</div>

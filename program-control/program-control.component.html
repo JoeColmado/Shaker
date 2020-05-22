@@ -1,0 +1,10 @@
+
+<div
+class="w3-card-4 w3-btn programCard w3-theme-d4 w3-hover-theme w3-margin w3-padding w3-round w3-center "
+*ngFor = "let  program of appStateService.allPrograms"
+[routerLink]="['/programDetail', program]"
+>
+<p>{{program.Name | uppercase}}</p>
+<p>{{'Frequency: ' + program.Frequency}}</p>
+<p>{{'Time: ' + program.Time}}</p>
+</div>

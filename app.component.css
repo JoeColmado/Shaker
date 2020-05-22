@@ -1,0 +1,10 @@
+#appWindow{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+div.mainFrame{
+  min-height: 90%;
+  overflow-y: hidden;
+}

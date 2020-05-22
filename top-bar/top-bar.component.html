@@ -1,0 +1,54 @@
+<header id="topBar" class="w3-top w3-bar w3-theme-d4">
+  <button [routerLink]="['programControl']" class="w3-bar-item w3-button w3-hover-theme w3-round w3-left w3-margin-right" ><img src="../../assets/list.png" alt="" style="height: 60px;"></button>
+  <button [routerLink]="['manualControl']" class="w3-bar-item  w3-left w3-button w3-round  w3-hover-theme w3-margin-right" ><img src="../../assets/addNew.png" alt="" style="height: 60px;"></button>
+<div class="w3-right w3-margin-right ">
+
+  <span
+  [ngClass]="{'stateIndicatorSelected' : appStateService.readyState === 0 ,'stateIndicatorError' : appStateService.readyState === 3}"
+  class="stateIndicator stateIndicatorError  w3-green"
+  ></span>
+  <span
+  [ngClass]="{'stateIndicatorSelected' : appStateService.readyState === 1 ,'stateIndicatorError' : appStateService.readyState === 3}"
+  class="stateIndicator  w3-orange "
+  ></span>
+  <span
+  [ngClass]="{'stateIndicatorSelected' : appStateService.readyState === 2 ,'stateIndicatorError' : appStateService.readyState === 3 }"
+  class="stateIndicator stateIndicatorSelected w3-red "
+  ></span>
+  <div class="w3-bold w3-center"
+  [ngSwitch]="appStateService.readyState"
+  >
+
+  <p
+  class="w3-green w3-round"
+  *ngSwitchCase="0"
+  >Online</p>
+  <p
+  class="w3-orange w3-round"
+  *ngSwitchCase="1"
+  >Ready</p>
+  <p
+  class="w3-red w3-round"
+  *ngSwitchCase="2"
+  >Processing</p>
+  <p
+  class="stateIndicatorError w3-red w3-round"
+  *ngSwitchCase="3"
+  >Error</p>
+  <p
+  class="stateIndicatorError w3-teal w3-round"
+  *ngSwitchCase="4"
+  >Finished</p>
+
+  </div>
+</div>
+<div
+*ngIf="appStateService.timerActive"
+[routerLink]="['processControl',appStateService.activeProgram]"
+class="w3-bar-item w3-hover-theme w3-card-4 w3-round w3-right w3-theme-d2 w3-center w3-margin">
+  <span  class="">{{appStateService.processFrequency}}</span>
+  <br>
+  <span  class="">{{appStateService.timeLeftString}}</span>
+</div>
+
+</header>

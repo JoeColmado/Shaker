@@ -1,0 +1,35 @@
+
+<div class="w3-bar w3-margin">
+  <button type="button" name="button"
+  class="w3-bar-item w3-btn w3-green"
+  (click)="setDeviceCreated()"
+  >Created</button>
+
+  <button type="button" name="button"
+  class="w3-bar-item w3-btn w3-orange "
+  (click)="setDeviceReady()"
+  >ready</button>
+
+  <button type="button" name="button"
+  class="w3-bar-item w3-btn w3-red "
+  (click)="setDeviceProcessing()"
+  >processing</button>
+
+  <button type="button" name="button"
+  class="w3-bar-item w3-btn w3-red "
+  (click)="setDeviceError()"
+  >Error</button>
+
+</div>
+
+<form class="w3-margin w3-padding "  method="post">
+
+  <label for="timerActiveCheckbox">With Timer</label>
+    <input type="checkbox" name="timerActiveCheckbox" value="">
+    <p></p>
+    <label  for="timeSelectInput">Select Time</label>
+    <input (focus)="inputOnFocus()" (blur)="inputOffFocus()" type="number" class="w3-center manuelInput w3-input" name="timeSelectInput" value="">
+    <label for="frequencySelectInput">Select Frequency</label>
+    <input  (focus)="inputOnFocus()" (blur)="inputOffFocus()" type="number" class="w3-center manuelInput w3-input" name="frequencySelectInput" value="">
+    <button  class="w3-center" type="button" name="button">Process</button>
+</form>
