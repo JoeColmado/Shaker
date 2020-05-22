@@ -9,7 +9,7 @@ import { ProgramListComponent } from './program-list/program-list.component';
 
 const routes: Routes = [
   {path:'manualControl', component:ManualControlComponent },
-  {path:'', component:ProgramControlComponent },
+  {path:'', component:ProgramListComponent },
   {path:'programDetail', component:ProgramDetailComponent },
   {path:'processControl', component:ProcessControlComponent },
   {path:'programControl', component:ProgramListComponent },
