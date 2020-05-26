@@ -5,6 +5,6 @@ export interface Program{
   Compound: string;
   Frequency: number;
   Time: number;
-
+  UseTimes: number;
 
 }

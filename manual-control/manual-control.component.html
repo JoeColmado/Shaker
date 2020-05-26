@@ -22,14 +22,18 @@
 
 </div>
 
-<form class="w3-margin w3-padding "  method="post">
+<div
+[ngSwitch]="deviceActive"
+class="">
 
-  <label for="timerActiveCheckbox">With Timer</label>
-    <input type="checkbox" name="timerActiveCheckbox" value="">
-    <p></p>
-    <label  for="timeSelectInput">Select Time</label>
-    <input (focus)="inputOnFocus()" (blur)="inputOffFocus()" type="number" class="w3-center manuelInput w3-input" name="timeSelectInput" value="">
-    <label for="frequencySelectInput">Select Frequency</label>
-    <input  (focus)="inputOnFocus()" (blur)="inputOffFocus()" type="number" class="w3-center manuelInput w3-input" name="frequencySelectInput" value="">
-    <button  class="w3-center" type="button" name="button">Process</button>
-</form>
+<button *ngSwitchCase="false" (click)="activateDevice()"  class="w3-btn w3-third w3-teal w3-padding w3-round" type="button" name="button">On</button>
+<button *ngSwitchCase="true" (click)="deactivateDevice()" class="w3-btn  w3-third w3-red w3-padding w3-round" type="button" name="button">Off</button>
+
+</div>
+
+<div class="w3-bar w3-half w3-margin">
+  <button (click)="decreaseFrequency()" class="w3-bar-item w3-btn w3-teal" type="button" name="button"><</button>
+  <div class="w3-bar-item">{{manualFrequency}}
+  </div>
+  <button (click)="increaseFrequency()" class="w3-bar-item w3-btn w3-teal" type="button" name="button">></button>
+</div>

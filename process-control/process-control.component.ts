@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute, Router, RouterModule, Routes  } from "@angular/router";
 import {AppStateService  } from "../services/app-state.service";
 
@@ -13,15 +13,13 @@ import {Program  } from "../services/program";
 export class ProcessControlComponent implements OnInit {
 
   selectedProgram: Program
-  timeLeft : number;
-  timeLeftString: string;
-  programFrequency: number;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public appStateService: AppStateService
     ){
+      //Selected Program given in the routing navigation
       this.route.params.subscribe( (params : Program) => this.selectedProgram= params );
      }
 
@@ -31,13 +29,9 @@ export class ProcessControlComponent implements OnInit {
       this.appStateService.setTimeLeft(this.selectedProgram.Time);
       this.appStateService.setFrequency(this.selectedProgram.Frequency);
     }
-    //this.timeLeft = this.selectedProgram.Time;
-    //this.createTimeLeftString() ;
   }
   ngOnDestroy(): void{
     if (this.appStateService.timerActive) {
-      console.log('running');
-
     }
     else{
     this.appStateService.stopProgram();
@@ -45,12 +39,10 @@ export class ProcessControlComponent implements OnInit {
   }
   onClose(){
     this.router.navigate([''])
-
   }
   onRunDevice(){
     this.appStateService.startProgram();
     this.appStateService.setActiveProgram(this.selectedProgram);
-
   }
   onStopDevice(){
     this.appStateService.pauseProgram();
@@ -59,22 +51,18 @@ export class ProcessControlComponent implements OnInit {
     this.appStateService.setDeviceFinished();
   }
   onRestartProgram(){
-    //this.resetTimer()
-    //this.onRunDevice();
+    this.resetTimer()
+    this.onRunDevice();
   }
-
-
-
-  //
   resetTimer(){
-    this.timeLeft = this.selectedProgram.Time;
+    console.log(this.selectedProgram.Time)
+    this.appStateService.setTimeLeft(this.selectedProgram.Time);
   }
   decreaseLeftTime(){
     this.appStateService.decreaseLeftTime();
   }
   increaseLeftTime(){
     this.appStateService.increaseLeftTime();
-
   }
   //Frequency Control
 

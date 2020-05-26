@@ -1,9 +1,9 @@
 
 
-<div class="w3-card-4 w3-round w3-margin w3-display-container w3-theme-d4 w3-center w3-xlarge w3-padding">
-<span (click)="onClose()" class="w3-btn w3-display-topright">x</span>
+<div class="programDetailCard w3-card-4 w3-round w3-margin w3-padding-16 w3-display-container w3-theme-d4 w3-center w3-xlarge w3-padding">
+  <span (click)="onClose()" class="w3-btn w3-display-topright">x</span>
 
-<div class="w3-row">
+  <div class="w3-row">
   <span class="w3-half">Teile Beschreibung: </span>
   <span class="w3-half" >{{selectedProgram.Name}}</span>
 </div>
@@ -20,7 +20,7 @@
 
 <div class="w3-row">
   <span class="w3-half">Drehzahl: </span>
-  <span class="w3-half" >{{selectedProgram.Frequency + ' Hz'}}</span>
+  <span class="w3-half" >{{selectedProgram.Frequency }}</span>
 </div>
 
 <div class="w3-row">

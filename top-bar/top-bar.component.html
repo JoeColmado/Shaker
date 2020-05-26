@@ -1,7 +1,9 @@
 <header id="topBar" class="w3-top w3-bar w3-theme-d4">
   <button [routerLink]="['programControl']" class="w3-bar-item w3-button w3-hover-theme w3-round w3-left w3-margin-right" ><img src="../../assets/list.png" alt="" style="height: 60px;"></button>
-  <button [routerLink]="['manualControl']" class="w3-bar-item  w3-left w3-button w3-round  w3-hover-theme w3-margin-right" ><img src="../../assets/addNew.png" alt="" style="height: 60px;"></button>
+  <button [routerLink]="['programEditor']" class="w3-bar-item  w3-left w3-button w3-round  w3-hover-theme w3-margin-right" ><img src="../../assets/addNew.png" alt="" style="height: 60px;"></button>
+  <button [routerLink]="['manualControl']" class="w3-bar-item  w3-left w3-button w3-round  w3-hover-theme w3-margin-right" >M</button>
 <div class="w3-right w3-margin-right ">
+
 
   <span
   [ngClass]="{'stateIndicatorSelected' : appStateService.readyState === 0 ,'stateIndicatorError' : appStateService.readyState === 3}"
@@ -15,6 +17,7 @@
   [ngClass]="{'stateIndicatorSelected' : appStateService.readyState === 2 ,'stateIndicatorError' : appStateService.readyState === 3 }"
   class="stateIndicator stateIndicatorSelected w3-red "
   ></span>
+
   <div class="w3-bold w3-center"
   [ngSwitch]="appStateService.readyState"
   >

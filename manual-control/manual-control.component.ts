@@ -11,7 +11,30 @@ export class ManualControlComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  setDeviceCreated(){
+// ---------OnOFF
+  deviceActive: boolean= false;
+  activateDevice(){
+    this.deviceActive = true;
+    this.appStateService.switchDeviceOn();
+  }
+  deactivateDevice(){
+    this.deviceActive = false;
+    this.appStateService.switchDeviceOff();
+  }
+  //-------------Frequency
+  manualFrequency: number = 2.5;
+  increaseFrequency(){
+    this.manualFrequency += 0.5;
+    this.appStateService.setFrequency(this.manualFrequency);
+  }
+  decreaseFrequency(){
+    this.manualFrequency -= 0.5;
+
+    this.appStateService.setFrequency(this.manualFrequency);
+  }
+
+  //---Device States
+    setDeviceCreated(){
     this.appStateService.setDeviceCreated();
   }
   setDeviceReady(){
