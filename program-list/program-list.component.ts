@@ -11,8 +11,7 @@ export class ProgramListComponent implements OnInit {
   constructor(public appStateService : AppStateService) { }
 
   ngOnInit(): void {
-    // console.log(this.appStateService.allPrograms);
-
+    this.appStateService.getAllPrograms()
   }
 
 }

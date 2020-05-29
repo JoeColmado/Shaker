@@ -15,6 +15,7 @@ import { retry } from "rxjs/operators";
 
 export class AppStateService {
   allPrograms : Program[]
+  amountPrograms :number
   hardwareControl: Hardware
   dataBase: DB
 
@@ -29,33 +30,50 @@ export class AppStateService {
     this.getAllPrograms();
   }
 
+  onFailCom(){
+    this.setDeviceError();
+    window.alert('Database Not Found');
+    this.getAllPrograms();
+  }
+
 // --DB Functionalities
-  getAllPrograms(){
-    this.dataBase.getAllPrograms()
-    .subscribe((data:any)=> {
+  subscribeAllPrograms(obs){
+    obs.subscribe(
+      (data: Program[]) => {
       this.allPrograms = data;
-      })
+      this.amountPrograms = data.length;
+      //Worst Error handling ever
+      if (this.readyState == 3) {
+        this.setDeviceCreated()
+      }
+
+    },
+    (error) => {
+      this.onFailCom();
+      throw error;
     }
-    insertNewProgram(newProgram){
-      console.log(newProgram);
-      this.dataBase.insertNewProgram(newProgram)
-      .subscribe((data:any)=> {
-        this.allPrograms = data;
-      })
+    )
+  }
+
+  getAllPrograms(){
+    let obs = this.dataBase.getAllPrograms()
+    this.subscribeAllPrograms(obs)
     }
-    modifyAttr(modifyData:any){
-      this.dataBase.modifyAttr(modifyData)
-      .subscribe((data:any)=> {
-        this.allPrograms = data;
-      })
-    }
-    deleteProgram(deleteData){
-      console.log(deleteData);
-      this.dataBase.deleteProgram(deleteData)
-      .subscribe((data:any)=> {
-        this.allPrograms = data;
-      })
-    }
+  insertNewProgram(newProgram){
+    let obs = this.dataBase.insertNewProgram(newProgram)
+    this.subscribeAllPrograms(obs)
+  }
+  modifyAttr(modifyData:any){
+    let obs =  this.dataBase.modifyAttr(modifyData)
+    this.subscribeAllPrograms(obs)
+  }
+  deleteProgram(deleteData){
+    let obs = this.dataBase.deleteProgram(deleteData)
+    this.subscribeAllPrograms(obs)
+  }
+  increaseUseTimes(modifyData){
+     this.modifyAttr(modifyData);
+  }
 
 
 
@@ -88,12 +106,11 @@ export class AppStateService {
     this.setDeviceFrequency();
   }
 
-
   setDeviceFrequency(){
     this.hardwareControl.setDeviceFrequency(this.processFrequency);
   }
 
-
+//Device States
   setDeviceCreated(){
     this.readyState = 0;
     this.unsetActiveProgram();
@@ -117,6 +134,7 @@ export class AppStateService {
   setActiveProgram(newProgram: Program){
     this.activeProgram = newProgram;
   }
+
   unsetActiveProgram(){
   }
   startProgram(){
@@ -136,6 +154,7 @@ export class AppStateService {
     this.pauseTimer();
     this.setDeviceFinished();
   }
+
 // TODO: Put timer in seperate file
 // Timer
 // timer = new Timer(this.testFunction);
@@ -145,7 +164,7 @@ export class AppStateService {
   timeLeft: number;
 
   setTimeLeft(time: number){
-    this.timeLeft = time;
+    this.timeLeft = time *60 ;
     this.createTimeLeftString()
   }
 

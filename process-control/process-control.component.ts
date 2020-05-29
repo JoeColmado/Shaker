@@ -24,6 +24,7 @@ export class ProcessControlComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.increaseUseTimes();
     if (!this.appStateService.timerActive) {
       this.appStateService.setDeviceReady();
       this.appStateService.setTimeLeft(this.selectedProgram.Time);
@@ -36,6 +37,15 @@ export class ProcessControlComponent implements OnInit {
     else{
     this.appStateService.stopProgram();
     }
+  }
+  increaseUseTimes(){
+    let newValue = this.selectedProgram.UseTimes - -1;
+    let data={
+      id: this.selectedProgram.Id,
+      attr: 'UseTimes',
+      value: newValue,
+    }
+    this.appStateService.increaseUseTimes(data)
   }
   onClose(){
     this.router.navigate([''])

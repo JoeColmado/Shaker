@@ -39,8 +39,47 @@ export class ProgramEditorComponent implements OnInit {
     console.log(this.newProgram.value);
   }
   saveProgram(){
-    this.appStateService.insertNewProgram(this.newProgram.value);
-    this.router.navigate(['']);
+    if (this.checkUserInput()) {
+      this.appStateService.insertNewProgram(this.newProgram.value);
+      this.router.navigate(['']);
+    }
+    else{
+      window.alert(this.errorMessage)
+    }
+
+  }
+  errorMessage: string
+  checkUserInput(){
+    let success : boolean = true;
+    //Name
+    if (this.newProgram.value.Name.length > 1) {
+    }
+    else{
+      this.errorMessage ='unvalid Name'
+      success = false;
+      return success;
+    }
+
+    //Time
+    if (typeof(this.newProgram.value.Time) == 'number' && this.newProgram.value.Time > 0) {
+    }
+    else{
+      success = false;
+      this.errorMessage ='unvalid Time'
+      return success;
+    }
+    //Frequency
+    if (typeof(this.newProgram.value.Frequency) == 'number' && this.newProgram.value.Frequency > 0 && this.newProgram.value.Frequency < 22) {
+      success = true;
+    }
+    else{
+      success = false;
+      this.errorMessage ='Frequency has to be a number from 0-22'
+      return success;
+    }
+
+
+    return success;
   }
 
 }

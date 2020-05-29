@@ -1,6 +1,7 @@
 import {HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
 import{Observable} from 'rxjs'
 import { retry } from "rxjs/operators";
+import {SERVER_URL} from './config'
 
 export class Hardware {
   constructor(private http: HttpClient){
@@ -48,10 +49,18 @@ export class Hardware {
   }
 
   makeServerRequest(data){
-    const SERVER_URL = "http://192.168.43.60:8080/hardware";
+    let url  = SERVER_URL + "/hardware";
     let params = new HttpParams()
       .set('reqData',JSON.stringify(data))
-    this.http.get<any[]>(SERVER_URL,{params})
-      .subscribe((data:any)=> console.log(data))
+    this.http.get<any[]>(url,{params})
+      .subscribe(
+        (data:any)=> {
+          console.log(data)
+        },
+        (error) =>{
+          window.alert('No Hardware found')
+
+        }
+      )
   }
 }

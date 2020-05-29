@@ -35,13 +35,13 @@
 *ngSwitchCase="1"
 >
 <div class="w3-row w3-padding w3-margin">
-  <h2 class="w3-third">Time</h2>
-  <input class="w3-third w3-xlarge" formControlName="Time" type="text" name="" value="">
+  <h2 class="w3-third">Time/min</h2>
+  <input class="w3-third w3-xlarge w3-center" formControlName="Time" type="number" name="" value="">
   <button (click)="modifyAttr('Time')" class="w3-btn w3-padding-4 w3-teal w3-xlarge w3-round" type="button" name="button">Save</button>
 </div>
 <div class="w3-row w3-padding w3-margin">
-  <h2 class="w3-third">Frequency</h2>
-  <input class="w3-third w3-xlarge" formControlName="Frequency" type="text" name="" value="">
+  <h2 class="w3-third">Frequency/Hz</h2>
+  <input class="w3-third w3-xlarge w3-center" formControlName="Frequency" type="text" name="" value="">
   <button (click)="modifyAttr('Frequency')" class="w3-btn w3-padding-4 w3-teal w3-xlarge w3-round" type="button" name="button">Save</button>
 </div>
   <button style="height: 60%"class=" w3-margin-8 w3-theme-d4 w3-round-large w3-xlarge w3-btn w3-display-topleft" (click)="prevPage()"  type="button" name="button"><</button>

@@ -3,26 +3,27 @@
 <table class=" w3-table w3-card-4 w3-bordered w3-striped">
 
       <tr class="w3-large w3-theme-d4">
-        <th>Id</th>
+        <th>Nummer</th>
         <th>Name</th>
         <th>Medium</th>
-        <th>Compound</th>
-        <th>Frequenz</th>
+        <th>Comp</th>
+        <th>Freq</th>
         <th>Zeit</th>
+        <th>Nutzung</th>
       </tr>
 
       <tr
-      *ngFor = "let  program of appStateService.allPrograms"
+      *ngFor = "let  program of appStateService.allPrograms, index as i"
       [routerLink]="['/programDetail', program]"
-      class="w3-hover-theme"
+      class="w3-large"
       >
-      <td>{{program.Id}}</td>
+      <td>{{i + 1 }}.</td>
       <td>{{program.Name}}</td>
       <td>{{program.Medium}}</td>
       <td>{{program.Compound}}</td>
-      <td>{{program.Frequency}}</td>
-      <td>{{program.Time}}</td>
-
+      <td>{{program.Frequency + " Hz"}}</td>
+      <td>{{program.Time + " min"}}</td>
+      <td>{{program.UseTimes + " X"}}</td>
       </tr>
 
 

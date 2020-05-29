@@ -30,6 +30,7 @@
 
 <div [ngSwitch]="appStateService.readyState" class=" w3-row w3-center w3-margin">
 
+  <button *ngSwitchCase="0" (click) = "onRunDevice()" class="w3-btn w3-margin w3-green w3-round " type="button" name="button">Run Device</button>
   <button *ngSwitchCase="1" (click) = "onRunDevice()" class="w3-btn w3-margin w3-green w3-round " type="button" name="button">Run Device</button>
   <button *ngSwitchCase="2" (click) = "onStopDevice()" class="w3-btn w3-margin w3-red w3-round" type="button" name="button">Stop Device</button>
   <button *ngSwitchCase="4" (click) = "onRestartProgram()" class="w3-btn w3-margin w3-teal w3-round" type="button" name="button">Restart</button>

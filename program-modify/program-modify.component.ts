@@ -56,6 +56,8 @@ export class ProgramModifyComponent implements OnInit {
   }
 
   modifyAttr(attr: string){
+    console.log(this.newProgram.value[attr]);
+
     let modifyData={
       id: this.selectedProgram.Id,
       attr: attr,
@@ -68,10 +70,6 @@ export class ProgramModifyComponent implements OnInit {
       id: this.selectedProgram.Id,
     }
     this.appStateService.deleteProgram(data);
-    this.router.navigate(['']);
-  }
-  saveProgram(){
-    this.appStateService.insertNewProgram(this.newProgram.value);
     this.router.navigate(['']);
   }
 

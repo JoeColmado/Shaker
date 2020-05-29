@@ -1,27 +1,20 @@
 import {HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
 import{Observable} from 'rxjs'
 import { retry } from "rxjs/operators";
+import {SERVER_URL} from './config'
 
 
 export class DB {
-  testData={
-    action: 'getPrograms',
-    subdata:{
-      id: 2,
-      attribute: 'name',
-      value: 'Nagel'
-    }
-  }
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    ) {
+
     // this.makeServerRequest(this.testData)
   }
 
   getAllPrograms(){
     let data ={
       action: 'getPrograms',
-      subdata:{
-
-      }
     }
     return this.makeServerRequest(data);
   }
@@ -46,14 +39,14 @@ export class DB {
       subdata: deleteData,
     }
     return this.makeServerRequest(data);
-    
+
   }
 
   makeServerRequest(data){
-    const SERVER_URL = "http://192.168.43.60:8080/db";
+    let url = SERVER_URL + "/db";
     let params = new HttpParams()
       .set('reqData',JSON.stringify(data))
-    return this.http.get<any[]>(SERVER_URL,{params})
+    return this.http.get<any[]>(url,{params})
       // .subscribe((data:any)=> console.log(data))
   }
 

@@ -22,21 +22,21 @@
     <h2 class="w3-third">Compound</h2>
   <input  class="w3-xlarge" formControlName="Compound" type="text" name="" value="">
   </div>
-  <button style="height: 60%" class=" w3-margin-8 w3-theme-d4 w3-round-large w3-xlarge w3-btn w3-display-topright" (click)="nextPage()"  type="button" name="button">></button>
+  <button style="height: 100%" class=" w3-margin-8 w3-theme-d1 w3-round-large w3-xlarge w3-btn w3-display-topright" (click)="nextPage()"  type="button" name="button">></button>
 
 </div>
 <div class="secondpage"
 *ngSwitchCase="1"
 >
 <div class="w3-row w3-margin">
-  <h2 class="w3-third">Time</h2>
-  <input class="w3-xlarge" formControlName="Time" type="text" name="" value="">
+  <h2 class="w3-third">Time/min</h2>
+  <input class="w3-xlarge w3-center" formControlName="Time" type="number" name="" value="">
 </div>
 <div class="w3-row w3-margin">
-  <h2 class="w3-third">Frequency</h2>
-<input class="w3-xlarge" formControlName="Frequency" type="text" name="" value="">
+  <h2 class="w3-third">Frequency/Hz</h2>
+<input class="w3-xlarge w3-center" formControlName="Frequency" type="number" name="" value="">
 </div>
-  <button style="height: 60%" class=" w3-margin-8 w3-theme-d4 w3-round-large w3-xlarge w3-btn w3-display-topleft" (click)="prevPage()"  type="button" name="button"><</button>
+  <button style="height: 100%" class=" w3-margin-8 w3-theme-d1 w3-round-large w3-xlarge w3-btn w3-display-topleft" (click)="prevPage()"  type="button" name="button"><</button>
   <button class=" w3-margin-8 w3-teal w3-round-large w3-xlarge w3-btn " (click)="saveProgram()" type="button" name="button">Save</button>
 </div>
 </form>

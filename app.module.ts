@@ -6,11 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { AppStateService } from "./services/app-state.service";
 import { ManualControlComponent } from './manual-control/manual-control.component';
 import { ProgramControlComponent } from './program-control/program-control.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +18,8 @@ import { ProgramListComponent } from './program-list/program-list.component';
 import { ProgramEditorComponent } from './program-editor/program-editor.component';
 import { ProgramModifyComponent } from './program-modify/program-modify.component';
 
+
+import { AppStateService } from "./services/app-state.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +41,9 @@ import { ProgramModifyComponent } from './program-modify/program-modify.componen
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AppStateService],
+  providers: [
+    AppStateService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

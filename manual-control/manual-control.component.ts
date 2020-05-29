@@ -54,5 +54,11 @@ export class ManualControlComponent implements OnInit {
   inputOffFocus(){
     this.inputActive =false;
   }
+  windowHeight: number;
+  windowWidth: number;
+  showWindowsize(){
+    this.windowHeight = window.innerHeight;
+    this.windowWidth = window.innerWidth;
+  }
 
 }
